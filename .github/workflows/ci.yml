@@ -21,6 +21,7 @@ jobs:
         
       - name: Setup Vulkan
         run: |
+          sudo apt install libglu1-mesa-dev freeglut3-dev mesa-common-dev
           sudo apt install vulkan-tools
           sudo apt install libvulkan-dev
           sudo apt install vulkan-validationlayers-dev spirv-tools

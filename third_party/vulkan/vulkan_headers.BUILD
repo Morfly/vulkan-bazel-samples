@@ -22,10 +22,30 @@ VULKAN_TEXTUAL_HDRS = [
     "include/vulkan/vulkan_xlib_xrandr.h",
 ]
 
+WIN32_LINKOPTS = []
+
+LINUX_LINKOPTS = [
+    "-lglfw",
+    "-lvulkan",
+    "-ldl ",
+    "-lpthread",
+    "-lX11",
+    "-lXxf86vm",
+    "-lXrandr",
+    "-lXi",
+]
+
+DARWIN_LINKOPTS = []
+
 cc_library(
     name = "vulkan_headers",
     hdrs = VULKAN_HDRS,
     includes = ["include"],
+    linkopts = select({
+        "@bazel_tools//src/conditions:windows": WIN32_LINKOPTS,
+        "@bazel_tools//src/conditions:linux_x86_64": LINUX_LINKOPTS,
+        "@bazel_tools//src/conditions:darwin": DARWIN_LINKOPTS,
+    }),
     textual_hdrs = VULKAN_TEXTUAL_HDRS,
     visibility = ["//visibility:public"],
 )

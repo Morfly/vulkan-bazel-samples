@@ -30,4 +30,4 @@ jobs:
       - name: Run sample app
         run: |
           echo Running Vulkan sample app...
-          bazelisk run //src:main --sandbox_debug
+          bazelisk run //src:main --sandbox_debug --verbose_failures

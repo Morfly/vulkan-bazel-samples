@@ -25,7 +25,6 @@ VULKAN_TEXTUAL_HDRS = [
 WIN32_LINKOPTS = []
 
 LINUX_LINKOPTS = [
-    #"-lglfw",
     "-lvulkan",
     "-ldl ",
     "-lpthread",

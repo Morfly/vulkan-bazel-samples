@@ -45,4 +45,4 @@ jobs:
       - name: Build sample app
         run: |
           echo Building Vulkan sample app...
-          bazelisk run //src:main --verbose_failures
+          bazelisk build //src:main --verbose_failures

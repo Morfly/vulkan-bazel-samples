@@ -39,6 +39,9 @@ jobs:
         
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v1.0.1
+
+      - name: Vulkan SDK path
+        run: echo $VULKAN_SDK
         
       - name: Build sample app
         run: bazelisk build //src:main --verbose_failures

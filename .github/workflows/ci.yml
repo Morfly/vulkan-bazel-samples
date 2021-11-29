@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  run_sample_app:
+    name: Run sample app
+    runs-on: ubuntu-latest
+
+    steps:   
+      - uses: actions/checkout@v2
+        
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v1.0.1
+        
+      - name: Run sample app
+        run: |
+          echo Running Vulkan sample app
+          bazelisk run //src:main

@@ -29,7 +29,7 @@ jobs:
         
       - name: Build sample app
         run: |
-          echo Running Vulkan sample app...
+          echo Building Vulkan sample app...
           bazelisk build //src:main --verbose_failures
 
   build-darwin:
@@ -44,5 +44,5 @@ jobs:
         
       - name: Build sample app
         run: |
-          echo Running Vulkan sample app...
-          bazelisk build //src:main --verbose_failures
+          echo Building Vulkan sample app...
+          bazelisk run //src:main --verbose_failures

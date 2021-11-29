@@ -30,7 +30,7 @@ jobs:
       - name: Build sample app
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: bazelisk build //src:main --verbose_failures
+          run: bazelisk run //src:main --verbose_failures
 
   build-darwin:
     name: Build on MacOS
@@ -43,4 +43,6 @@ jobs:
         uses: bazelbuild/setup-bazelisk@v1.0.1
         
       - name: Build sample app
-        run: bazelisk build //src:main --verbose_failures
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: bazelisk run //src:main --verbose_failures

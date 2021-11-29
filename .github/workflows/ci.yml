@@ -19,11 +19,11 @@ jobs:
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v1.0.1
         
-      - name: Install OpenGL, X11
+      - name: Setup Vulkan
         run: |
-          sudo apt-get update
-          sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
-          sudo apt-get install xorg-dev
+          sudo apt install vulkan-tools
+          sudo apt install libvulkan-dev
+          sudo apt install vulkan-validationlayers-dev spirv-tools
         
       - name: Run sample app
         run: |

@@ -31,3 +31,18 @@ jobs:
         run: |
           echo Running Vulkan sample app...
           bazelisk build //src:main --verbose_failures
+
+  build-darwin:
+    name: Build on MacOS
+    runs-on: macos-latest
+
+    steps:   
+      - uses: actions/checkout@v2
+        
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v1.0.1
+        
+      - name: Build sample app
+        run: |
+          echo Running Vulkan sample app...
+          bazelisk build //src:main --verbose_failures

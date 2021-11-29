@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-linux:
+  build-ubuntu:
     name: Build on Linux
     runs-on: ubuntu-latest
 
@@ -30,8 +30,21 @@ jobs:
       - name: Build sample app
         run: bazelisk build //src:main --verbose_failures
 
-  build-darwin:
+  build-macos:
     name: Build on MacOS
+    runs-on: macos-latest
+
+    steps:   
+      - uses: actions/checkout@v2
+        
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v1.0.1
+        
+      - name: Build sample app
+        run: bazelisk build //src:main --verbose_failures
+        
+  build-windows:
+    name: Build on Windows
     runs-on: macos-latest
 
     steps:   

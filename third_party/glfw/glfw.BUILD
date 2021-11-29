@@ -155,7 +155,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = select({
         "@bazel_tools//src/conditions:windows": [":glfw_src"],
-        "@bazel_tools//src/conditions:linux_x86_64": [":glfw_src_cc"],
+        "@bazel_tools//src/conditions:linux_x86_64": [":glfw_src"],
         "@bazel_tools//src/conditions:darwin": [":glfw_src_darwin"],
     }),
 )

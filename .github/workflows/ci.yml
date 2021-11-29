@@ -19,6 +19,12 @@ jobs:
       - name: Setup Bazelisk
         uses: bazelbuild/setup-bazelisk@v1.0.1
         
+      - name: Setup Vulkan
+        run: |
+          sudo apt install vulkan-tools
+          sudo apt install libvulkan-dev
+          sudo apt install vulkan-validationlayers-dev spirv-tools
+        
       - name: Run sample app
         run: |
           echo Running Vulkan sample app

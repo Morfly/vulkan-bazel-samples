@@ -26,12 +26,15 @@ http_archive(
 
 # ===== vulkan =====
 
-VULKAN_VERSION = "1.2.198"
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-http_archive(
-    name = "vulkan_headers",
-    build_file = "@//third_party/vulkan:vulkan_headers.BUILD",
-    sha256 = "0d0c54a6f96a0a1decdbb7270baf003a71b48c68b3516fed55882d9401e626c2",
-    strip_prefix = "Vulkan-Headers-{}".format(VULKAN_VERSION),
-    urls = ["https://github.com/KhronosGroup/Vulkan-Headers/archive/v{}.zip".format(VULKAN_VERSION)],
+git_repository(
+    name = "rules_vulkan",
+    commit = "ec752cce5034aa2e2af5ae9172b24bf6e3409d6a",
+    remote = "https://github.com/Morfly/rules_vulkan",
+    shallow_since = "1638250475 -0800",
 )
+
+load("@rules_vulkan//vulkan:repositories.bzl", "vulkan_repositories")
+
+vulkan_repositories()

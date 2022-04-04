@@ -1,5 +1,19 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+# ===== vulkan =====
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "rules_vulkan",
+    remote = "https://github.com/jadarve/rules_vulkan.git",
+    tag = "v0.0.6"
+)
+
+load("@rules_vulkan//vulkan:repositories.bzl", "vulkan_repositories")
+
+vulkan_repositories()
+
 # ===== glfw =====
 
 GLFW_VERSION = "3.3.5"
@@ -23,18 +37,3 @@ http_archive(
     strip_prefix = "glm-{}".format(GLM_VERSION),
     urls = ["https://github.com/g-truc/glm/archive/{}.zip".format(GLM_VERSION)],
 )
-
-# ===== vulkan =====
-
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-
-git_repository(
-    name = "rules_vulkan",
-    commit = "ec752cce5034aa2e2af5ae9172b24bf6e3409d6a",
-    remote = "https://github.com/Morfly/rules_vulkan",
-    shallow_since = "1638250475 -0800",
-)
-
-load("@rules_vulkan//vulkan:repositories.bzl", "vulkan_repositories")
-
-vulkan_repositories()
